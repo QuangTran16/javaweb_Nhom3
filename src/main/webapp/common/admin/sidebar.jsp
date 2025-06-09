@@ -5,7 +5,7 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="admin-home">
           <i class="bi bi-grid"></i>
           <span>Tổng quan</span>
         </a>
@@ -37,7 +37,7 @@
       <!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link"  href="admin-report">
           <i class="bi bi-bar-chart"></i><span>Báo cáo & thống kê</span>
         </a>
       </li>

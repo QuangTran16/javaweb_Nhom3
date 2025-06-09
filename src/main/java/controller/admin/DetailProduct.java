@@ -1,43 +1,50 @@
 package controller.admin;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import dao.IProductDAO;
+import dao.Impl.ProductImpl;
+import model.ProductObject;
 
-/**
- * Servlet implementation class DetailProduct
- */
 @WebServlet("/admin-detail-product")
 public class DetailProduct extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private static final long serialVersionUID = 1L;
+    private IProductDAO productDAO;
+
     public DetailProduct() {
         super();
-        // TODO Auto-generated constructor stub
+        productDAO = new ProductImpl(); // Khởi tạo DAO
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/views/admin/details-product.jsp");
-		rd.forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Lấy productId từ tham số URL
+        String productId = request.getParameter("id");
+        ProductObject product = null;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        try {
+            if (productId != null && !productId.isEmpty()) {
+                int id = Integer.parseInt(productId);
+                // Lấy thông tin sản phẩm từ cơ sở dữ liệu
+                product = productDAO.getProductById(id);
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
 
+        // Đặt sản phẩm vào request để gửi đến JSP
+        request.setAttribute("product", product);
+
+        // Chuyển tiếp đến trang chi tiết sản phẩm
+        RequestDispatcher rd = request.getRequestDispatcher("/views/admin/details-product.jsp");
+        rd.forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 }

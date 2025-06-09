@@ -10,6 +10,7 @@ public interface IProductDAO {
 	boolean insertProduct(ProductObject product);
 	boolean updateProduct(ProductObject product);
 	boolean deleteProduct(int id);
-	
+    double getTotalRevenue();
+    double getTotalInventoryValue();
 	 
 }

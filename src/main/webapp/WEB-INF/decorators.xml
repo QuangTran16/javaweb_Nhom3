@@ -12,7 +12,7 @@
     </decorator>
     
     <exclude>
-        <url-pattern>/api/*</url-pattern>
+        <url-pattern>/api*</url-pattern>
     </exclude>
 
 </decorators>

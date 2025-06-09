@@ -1,66 +1,3 @@
-const products = [
-  {
-    name: "Ivory Bloom Dress – Đầm midi cổ chữ V phối ren",
-    price: "350.000đ",
-    image: "/jsp-servlet/templates/admin/img/IvoryBloomDress.webp",
-  },
-  {
-    name: "Golden Hour Skirt – Chân váy maxi vàng hoa",
-    price: "1.390.000đ",
-    image: "/jsp-servlet/templates/admin/img/GoldenHourSkirt.webp",
-  },
-  {
-    name: "Áo lụa phối xếp ly xoắn ngực",
-    price: "387.000đ ",
-    image: "/jsp-servlet/templates/admin/img/aoluaphoixeplyxoannguc.webp",
-  },
-  {
-    name: "Chân váy ren xếp ly",
-    price: "200.000đ",
-    image: "/jsp-servlet/templates/admin/img/chanvayrenxeply.webp",
-  },
-  {
-    name: "Đầm hai dây nhún ngực",
-    price: "507.000đ",
-    image: "/jsp-servlet/templates/admin/img/damhaidaynhunnguc.webp",
-  },
-  {
-    name: "Sunpetal Dress – Đầm Tencel hoa vàng pastel",
-    price: "795.000đ",
-    image: "/jsp-servlet/templates/admin/img/SunpetalDress.webp",
-  },
-  {
-    name: "Chân váy bút chì cạp cách điệu",
-    price: "357.000đ",
-    image: "/jsp-servlet/templates/admin/img/Chanvaybutchicapcachdieu.jpg",
-  },
-  {
-    name: "Chân váy chữ A phối viền hoa nổi",
-    price: "267.000đ",
-    image: "/jsp-servlet/templates/admin/img/chanvaychuAphoivienhoanoi.webp",
-  },
-  {
-    name: "Chân váy A ngắn vạt chéo",
-    price: "890.000đ",
-    image: "/jsp-servlet/templates/admin/img/ChanvayAnganvatcheo.webp",
-  },
-  {
-    name: "Chân váy midi phối ren",
-    price: "375.000đ",
-    image: "/jsp-servlet/templates/admin/img/chanvaymidiphoiren.webp",
-  },
-  {
-    name: "Áo thun đính ren",
-    price: "100.000đ",
-    image: "/jsp-servlet/templates/admin/img/aothundinhren.webp",
-  },
-  {
-    name: "Blossom Scarf Tee – Áo thun phối khăn",
-    price: "650.000đ",
-    image: "/jsp-servlet/templates/admin/img/BlossomScarfTee.webp",
-  },
-];
-
 let currentPage = 1;
 let itemsPerPage = 10;
 let filteredProducts = [...products];
@@ -88,40 +25,34 @@ function renderProducts() {
     return;
   }
 
-  pageItems.forEach((product, index) => {
+  pageItems.forEach((product) => {
     const col = document.createElement("div");
     col.className = "col-md-6 mb-3";
     col.innerHTML = `
-                      <div class="card h-100" style="margin-bottom: 0px;">
-                        <div class="row g-0">
-                          <div class="col-auto">
-                            <img src="${product.image}" alt="${
-      product.name
-    }" class="img-fluid rounded-start product-thumb" style="width: 200px; height: 100%; object-fit: cover;" />
-                          </div>
-                          <div class="col">
-                            <div class="card-body d-flex flex-column justify-content-between h-100">
-                              <div>
-                                <h6 class="card-title mb-1">${product.name}</h6>
-                                <p class="mb-1 text-muted">Mã: SP0${
-                                  index + 1
-                                }</p>
-                                <p class="mb-1">Giá: <strong>${
-                                  product.price
-                                }</strong></p>
-                                <p class="mb-1">Trạng thái: <span class="badge bg-success">Còn hàng</span></p>
-                                <p class="mb-2 text-muted">Danh mục: Thời trang</p>
-                              </div>
-                              <div class="d-flex justify-content-end gap-2">
-                                <a href="admin-repair-product" class="btn btn-sm btn-outline-warning" title="Sửa"><i class="bi bi-pencil"></i></a>
-                                <a href="#" class="btn btn-sm btn-outline-danger inner-remove" title="Xóa"><i class="bi bi-trash"></i></a>
-                                <a href="admin-detail-product" class="btn btn-sm btn-outline-info" title="Chi tiết"><i class="bi bi-eye"></i></a>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    `;
+      <div class="card h-100" style="margin-bottom: 0px;">
+        <div class="row g-0">
+          <div class="col-auto">
+            <img src="${product.image}" alt="${product.name}" class="img-fluid rounded-start product-thumb" style="width: 200px; height: 100%; object-fit: cover;" />
+          </div>
+          <div class="col">
+            <div class="card-body d-flex flex-column justify-content-between h-100">
+              <div>
+                <h6 class="card-title mb-1">${product.name}</h6>
+                <p class="mb-1 text-muted">${product.code}</p>
+                <p class="mb-1">Giá: <strong>${product.price}</strong></p>
+                
+                <p class="mb-2 text-muted">Danh mục: ${product.category}</p>
+              </div>
+              <div class="d-flex justify-content-end gap-2">
+                <a href="admin-repair-product?id=${product.id}" class="btn btn-sm btn-outline-warning" title="Sửa"><i class="bi bi-pencil"></i></a>
+                <a href="admin-delete-product?id=${product.id}" class="btn btn-sm btn-outline-danger inner-remove" title="Xóa"><i class="bi bi-trash"></i></a>
+                <a href="admin-detail-product?id=${product.id}" class="btn btn-sm btn-outline-info" title="Chi tiết"><i class="bi bi-eye"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
     container.appendChild(col);
   });
 
@@ -131,7 +62,7 @@ function renderProducts() {
 function renderPagination() {
   pagination.innerHTML = "";
 
-  if (itemsPerPage >= filteredProducts.length) return; // Không phân trang nếu hiển thị hết
+  if (itemsPerPage >= filteredProducts.length) return;
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
@@ -157,6 +88,34 @@ searchInput.addEventListener("input", function () {
   renderProducts();
 });
 
+const dateFilter = document.getElementById("dateFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+
+function applyFilters() {
+  const keyword = searchInput.value.toLowerCase();
+  const selectedCategory = categoryFilter.value;
+  const selectedDate = dateFilter.value;
+
+  filteredProducts = products.filter((product) => {
+    const matchName = product.name.toLowerCase().includes(keyword);
+    const matchCategory = !selectedCategory || product.category === selectedCategory;
+	
+    const productDate = product.createdDate?.substring(0, 10); // Cắt phần 'YYYY-MM-DD' từ 'YYYY-MM-DD HH:mm:ss'
+    const matchDate = !selectedDate || productDate === selectedDate;
+
+    return matchName && matchCategory && matchDate;
+  });
+
+  currentPage = 1;
+  renderProducts();
+}
+
+
+searchInput.addEventListener("input", applyFilters);
+categoryFilter.addEventListener("change", applyFilters);
+dateFilter.addEventListener("change", applyFilters);
+
+
 itemsPerPageSelect.addEventListener("change", function () {
   const value = this.value;
   if (value === "all") {
@@ -168,4 +127,5 @@ itemsPerPageSelect.addEventListener("change", function () {
   renderProducts();
 });
 
+// Khởi tạo lần đầu
 renderProducts();

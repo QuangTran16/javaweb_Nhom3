@@ -15,6 +15,8 @@
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet" />
 
+
+
   <!-- Vendor CSS Files -->
   <link href="<c:url value='/templates/admin/bootstrap/bootstrap.min.css'/>" rel="stylesheet" />
   <link href="<c:url value='/templates/admin/bootstrap-icons/bootstrap-icons.css'/>" rel="stylesheet" />
@@ -32,6 +34,7 @@
   <link rel="stylesheet" href="<c:url value='/templates/admin/css/ngoquangha-order-list.css'/>">
   <link rel="stylesheet" href="<c:url value='/templates/admin/css/ngoquangha-order-edit.css'/>">
   <link rel="stylesheet" href="<c:url value='/templates/admin/css/manager-user.css'/>">
+
   <link href="<c:url value='/templates/admin/css/style.css'/>" rel="stylesheet" />
 <title><dec:title default="Trang admin"/></title>
 </head>
@@ -50,6 +53,9 @@
 	<!-- Footer -->
 	<%@ include file="/common/admin/footer.jsp"%>
 	<!-- End Footer -->
+
+
+
 	
 	<!-- Vendor JS Files -->
   <script src="<c:url value='/templates/admin/apexcharts/apexcharts.min.js'/>"></script>
@@ -66,5 +72,7 @@
   <script src="<c:url value='/templates/admin/js/products-list.js'/>"></script>
   <script src="<c:url value='/templates/admin/js/validate-product.js'/>"></script>
   <script src="<c:url value='/templates/admin/js/add-product.js'/>"></script>
+   <script src="<c:url value='/templates/admin/js/repair-product.js'/>"></script>
+  
 </body>
 </html>

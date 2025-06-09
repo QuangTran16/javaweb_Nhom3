@@ -1,5 +1,5 @@
 // Delete Product in Product List
-const productList = document.querySelector("#productContainer");
+/*const productList = document.querySelector("#productContainer");
 if (productList) {
   productList.addEventListener("click", (event) => {
     if (event.target.closest(".inner-remove")) {
@@ -11,7 +11,19 @@ if (productList) {
       }
     }
   });
-}
+}*/
+
+container.addEventListener("click", function (e) {
+  const btn = e.target.closest(".inner-remove");
+  if (btn) {
+    const confirmed = confirm("Bạn có chắc muốn xóa sản phẩm này?");
+    if (!confirmed) {
+      e.preventDefault(); // Ngăn chuyển hướng nếu không xác nhận
+    }
+  }
+});
+
+
 
 // End Delete Product in Product List
 
