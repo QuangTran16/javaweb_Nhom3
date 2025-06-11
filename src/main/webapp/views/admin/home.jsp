@@ -277,85 +277,7 @@
 						</div>
 						<!-- End Reports -->
 
-						<!-- Recent Sales -->
-
-						<div class="col-12" id="doanhso">
-							<div class="card recent-sales overflow-auto">
-								<div class="filter">
-									<a class="icon" href="#" data-bs-toggle="dropdown"><i
-										class="bi bi-three-dots"></i></a>
-									<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-										<li class="dropdown-header text-start">
-											<h6>Bộ lọc</h6>
-										</li>
-
-										<li><a class="dropdown-item" href="#">Hôm nay</a></li>
-										<li><a class="dropdown-item" href="#">Tháng này</a></li>
-										<li><a class="dropdown-item" href="#">Năm này</a></li>
-									</ul>
-								</div>
-
-								<div class="card-body">
-									<h5 class="card-title">
-										Doanh số gần đây <span>| Hôm nay</span>
-									</h5>
-
-									<table class="table table-borderless datatable">
-										<thead>
-											<tr>
-												<th scope="col">#</th>
-												<th scope="col">Khách Hàng</th>
-												<th scope="col">Sản Phẩm</th>
-												<th scope="col">Giá</th>
-												<th scope="col">Trạng thái</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<th scope="row"><a href="#">#2457</a></th>
-												<td>Trần Văn Quang</td>
-												<td><a href="#" class="text-primary">Áo thun Daily
-														Metagent</a></td>
-												<td>399.000đ</td>
-												<td><span class="badge bg-success">Đã duyệt </span></td>
-											</tr>
-											<tr>
-												<th scope="row"><a href="#">#2147</a></th>
-												<td>Ngô Quang Hà</td>
-												<td><a href="#" class="text-primary">Áo sơ mi vải
-														thô dáng slim fit</a></td>
-												<td>350.000đ</td>
-												<td><span class="badge bg-warning">Đang xử lý</span></td>
-											</tr>
-											<tr>
-												<th scope="row"><a href="#">#2049</a></th>
-												<td>Phan Quyết Anh</td>
-												<td><a href="#" class="text-primary">Áo khoác len</a></td>
-												<td>537.000đ</td>
-												<td><span class="badge bg-success">Đã duyệt</span></td>
-											</tr>
-											<tr>
-												<th scope="row"><a href="#">#2644</a></th>
-												<td>Hoàng Thị Lan</td>
-												<td><a href="#" class="text-primar">Đầm suông Tweed</a>
-												</td>
-												<td>1.245.000đ</td>
-												<td><span class="badge bg-danger">Bị từ chối</span></td>
-											</tr>
-											<tr>
-												<th scope="row"><a href="#">#2644</a></th>
-												<td>Trần Anh Thư</td>
-												<td><a href="#" class="text-primary">Elegant Silk
-														Blouse - Áo sơ mi lụa</a></td>
-												<td>850.000đ</td>
-												<td><span class="badge bg-success">Đã duyệt</span></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-						<!-- End Recent Sales -->
+						
 
 						<!-- Top Selling -->
 
@@ -549,93 +471,65 @@
 					</div>
 					<!-- End Budget Report -->
 
-					<!-- Website Traffic -->
-					<div class="card">
-						<div class="filter">
-							<a class="icon" href="#" data-bs-toggle="dropdown"><i
-								class="bi bi-three-dots"></i></a>
-							<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-								<li class="dropdown-header text-start">
-									<h6>Bộ lọc</h6>
-								</li>
-
-								<li><a class="dropdown-item" href="#">Hôm nay</a></li>
-								<li><a class="dropdown-item" href="#">Tháng này</a></li>
-								<li><a class="dropdown-item" href="#">Năm này</a></li>
-							</ul>
-						</div>
-
-						<div class="card-body pb-0" style="max-height: 433px">
-							<h5 class="card-title">
-								Lưu lượng truy cập website <span>| Hôm nay</span>
-							</h5>
-
-							<div id="trafficChart" style="min-height: 400px" class="echart"></div>
-
-							<script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts
-                    .init(document.querySelector("#trafficChart"))
-                    .setOption({
-                      tooltip: {
-                        trigger: "item",
-                      },
-                      legend: {
-                        top: "5%",
-                        left: "center",
-                      },
-                      series: [
-                        {
-                          name: "Nguồn truy cập",
-                          type: "pie",
-                          radius: ["40%", "70%"],
-                          avoidLabelOverlap: false,
-                          label: {
-                            show: false,
-                            position: "center",
-                          },
-                          emphasis: {
-                            label: {
-                              show: true,
-                              fontSize: "18",
-                              fontWeight: "bold",
-                            },
-                          },
-                          labelLine: {
-                            show: false,
-                          },
-                          data: [
-                            {
-                              value: 1048,
-                              name: "Công cụ tìm kiếm",
-                            },
-                            {
-                              value: 735,
-                              name: "Truy cập trực tiếp",
-                            },
-                            {
-                              value: 580,
-                              name: "Email",
-                            },
-                            {
-                              value: 484,
-                              name: "Quảng cáo liên kết",
-                            },
-                            {
-                              value: 300,
-                              name: "Quảng cáo video",
-                            },
-                          ],
-                        },
-                      ],
-                    });
-                });
-              </script>
-						</div>
-					</div>
-					<!-- End Website Traffic -->
+					
 				</div>
 				<!-- End Right side columns -->
+				
+				<!-- Recent Sales -->
+
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title">Doanh số gần đây</h5>
+									<c:if test="${not empty error}">
+										<div class="alert alert-danger">${error}</div>
+									</c:if>
+									<table class="table datatable">
+										<thead>
+											<tr>
+												<th>Khách hàng</th>
+												<th>Sản phẩm</th>
+												<th>Giá</th>
+												<th>Trạng thái</th>
+												<th>Ngày đặt hàng</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="order" items="${orderList}">
+												<tr>
+													<td>${order.customerName}</td>
+													<td>${order.productName}</td>
+													<td><fmt:formatNumber value="${order.price}"
+															type="number" pattern="#,##0.00" /> VNĐ</td>
+													<td><c:choose>
+															<c:when test="${order.orderStatus == 'pending'}">
+																<span class="badge bg-warning">${order.orderStatus}</span>
+															</c:when>
+															<c:when test="${order.orderStatus == 'approved'}">
+																<span class="badge bg-success">${order.orderStatus}</span>
+															</c:when>
+															<c:when test="${order.orderStatus == 'cancelled'}">
+																<span class="badge bg-danger">${order.orderStatus}</span>
+															</c:when>
+															<c:otherwise>
+																<span class="badge bg-secondary">${order.orderStatus}</span>
+															</c:otherwise>
+														</c:choose></td>
+													<td>${order.orderDate}</td>
+												</tr>
+											</c:forEach>
+											<c:if test="${empty orderList}">
+												<tr>
+													<td colspan="5" class="text-center">Không có đơn hàng
+														nào.</td>
+												</tr>
+											</c:if>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<!-- End Recent Sales -->
 
 				<!-- Top Selling -->
 				<div class="col-12">
@@ -682,7 +576,8 @@
 									</tr>
 									<tr>
 										<th scope="row"><a href="#"><img
-												src="<c:url value='/templates/admin/img/product-2.jpg'/>" alt="" /></a></th>
+												src="<c:url value='/templates/admin/img/product-2.jpg'/>"
+												alt="" /></a></th>
 										<td><a href="#" class="text-primary fw-bold">Forge
 												Pants - Quần dài Tuysi ống đứng</a></td>
 										<td>1.290.000đ</td>
@@ -691,7 +586,8 @@
 									</tr>
 									<tr>
 										<th scope="row"><a href="#"><img
-												src="<c:url value='/templates/admin/img/product-3.jpg'/>" alt="" /></a></th>
+												src="<c:url value='/templates/admin/img/product-3.jpg'/>"
+												alt="" /></a></th>
 										<td><a href="#" class="text-primary fw-bold">Elegant
 												Silk Blouse - Áo sơ mi lụa</a></td>
 										<td>850.000đ</td>
@@ -700,7 +596,8 @@
 									</tr>
 									<tr>
 										<th scope="row"><a href="#"><img
-												src="<c:url value='/templates/admin/img/product-4.jpg'/>" alt="" /></a></th>
+												src="<c:url value='/templates/admin/img/product-4.jpg'/>"
+												alt="" /></a></th>
 										<td><a href="#" class="text-primary fw-bold">Áo sơ mi
 												lụa đính hoa</a></td>
 										<td>1.150.000đ</td>
@@ -709,7 +606,8 @@
 									</tr>
 									<tr>
 										<th scope="row"><a href="#"><img
-												src="<c:url value='/templates/admin/img/product-5.jpg'/>" alt="" /></a></th>
+												src="<c:url value='/templates/admin/img/product-5.jpg'/>"
+												alt="" /></a></th>
 										<td><a href="#" class="text-primary fw-bold">Elegant
 												Silk Blouse - Áo sơ mi lụa</a></td>
 										<td>850.000đ</td>
@@ -747,7 +645,8 @@
 
 							<div class="news pb-4">
 								<div class="post-item clearfix">
-									<img src="<c:url value='/templates/admin/img/news-1.jpg'/>" alt="" />
+									<img src="<c:url value='/templates/admin/img/news-1.jpg'/>"
+										alt="" />
 									<h4>
 										<a href="#">Giảm giá sốc 50% toàn bộ sản phẩm nhân dịp
 											sinh nhật cửa hàng!</a>
@@ -757,7 +656,8 @@
 								</div>
 
 								<div class="post-item clearfix">
-									<img src="<c:url value='/templates/admin/img/news-2.jpg'/>" alt="" />
+									<img src="<c:url value='/templates/admin/img/news-2.jpg'/>"
+										alt="" />
 									<h4>
 										<a href="#">Ra mắt BST Xuân Hè 2025 – Xu hướng thời trang
 											bạn không thể bỏ lỡ!</a>
@@ -766,7 +666,8 @@
 								</div>
 
 								<div class="post-item clearfix">
-									<img src="<c:url value='/templates/admin/img/news-3.jpg'/>" alt="" />
+									<img src="<c:url value='/templates/admin/img/news-3.jpg'/>"
+										alt="" />
 									<h4>
 										<a href="#">5 cách mix & match áo sơ mi giúp bạn luôn thời
 											thượng</a>
@@ -776,7 +677,8 @@
 								</div>
 
 								<div class="post-item clearfix">
-									<img src="<c:url value='/templates/admin/img/news-4.jpg'/>" alt="" />
+									<img src="<c:url value='/templates/admin/img/news-4.jpg'/>"
+										alt="" />
 									<h4>
 										<a href="#">Cảnh báo hàng giả – Chỉ mua hàng chính hãng
 											tại website của chúng tôi</a>
@@ -786,7 +688,8 @@
 								</div>
 
 								<div class="post-item clearfix">
-									<img src="<c:url value='/templates/admin/img/news-5.jpg'/>" alt="" />
+									<img src="<c:url value='/templates/admin/img/news-5.jpg'/>"
+										alt="" />
 									<h4>
 										<a href="#">Hơn 5000 khách hàng đã đặt hàng trong tháng
 											qua – Còn bạn thì sao?</a>

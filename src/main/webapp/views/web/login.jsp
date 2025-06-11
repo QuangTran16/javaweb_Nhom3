@@ -130,7 +130,7 @@
 										</div>
 										<div class="col-12">
 											<p class="small mb-0">
-												Chưa có tài khoản? <a href="pages-register.html">Tạo tài
+												Chưa có tài khoản? <a href="register">Tạo tài
 													khoản</a>
 											</p>
 										</div>

@@ -25,8 +25,8 @@
             </div>
             <div class="col-md-6 d-flex align-items-center position-relative mb-3">
               <label for="productCode" class="form-label" style="width: 150px;">Mã sản phẩm</label>
-              <input type="text" class="form-control" id="productCode" name="productCode" value="${productCode}" placeholder="31B0156">
-              <div class="text-danger small position-absolute" style="top: 100%; left: 130px;" id="error-productCode">${errorProductCode}</div>
+              <input type="text" class="form-control" id="productCode" name="productCode" value="${productCode}" placeholder="31B0156"style="margin-left: 40px;">
+              <div class="text-danger small position-absolute" style="top: 100%; left: 162px;" id="error-productCode">${errorProductCode}</div>
             </div>
           </div>
           <div class="row mb-3">
@@ -37,13 +37,13 @@
             </div>
             <div class="col-md-6 d-flex align-items-center position-relative mb-3">
               <label for="productCategory" class="form-label" style="width: 150px;">Danh mục</label>
-              <select class="form-select" id="productCategory" name="productCategory">
+              <select class="form-select" id="productCategory" name="productCategory" style="margin-left: 40px;">
                 <option value="">Chọn danh mục</option>
                 <c:forEach var="category" items="${categories}">
                     <option value="${category}" <c:if test="${category == productCategory}">selected</c:if>>${category}</option>
                 </c:forEach>
               </select>
-              <div class="text-danger small position-absolute" style="top: 100%; left: 130px;" id="error-productCategory">${errorProductCategory}</div>
+              <div class="text-danger small position-absolute" style="top: 100%; left: 162px;" id="error-productCategory">${errorProductCategory}</div>
             </div>
           </div>
           <div class="row mb-3">
@@ -54,8 +54,8 @@
             </div>
             <div class="col-md-6 d-flex align-items-center position-relative mb-3">
               <label for="productColor" class="form-label" style="width: 150px;">Màu sắc</label>
-              <input type="text" class="form-control" id="productColor" name="productColor" value="${productColor}" placeholder="Vàng, Trắng">
-              <div class="text-danger small position-absolute" style="top: 100%; left: 130px;" id="error-productColor">${errorProductColor}</div>
+              <input type="text" class="form-control" id="productColor" name="productColor" value="${productColor}" placeholder="Vàng, Trắng" style="margin-left: 40px;">
+              <div class="text-danger small position-absolute" style="top: 100%; left: 162px;" id="error-productColor">${errorProductColor}</div>
             </div>
           </div>
           <div class="row mb-3">
@@ -66,8 +66,8 @@
             </div>
             <div class="col-md-6 d-flex align-items-center position-relative mb-3">
               <label for="productImage" class="form-label" style="width: 150px;">Ảnh sản phẩm</label>
-              <input class="form-control" type="file" id="productImage" name="productImage" multiple style="margin-left: 0px;">
-              <div class="text-danger small position-absolute" style="top: 100%; left: 130px;" id="error-productImage">${errorProductImage}</div>
+              <input class="form-control" type="file" id="productImage" name="productImage" multiple style="margin-left: 40px;">
+              <div class="text-danger small position-absolute" style="top: 100%; left: 162px;" id="error-productImage">${errorProductImage}</div>
             </div>
           </div>
           
@@ -75,7 +75,7 @@
             <label for="productDescription" class="col-md-4 col-lg-3 col-form-label" style="width: 150px;">Mô tả sản phẩm</label>
             <div class="col-md-8 col-lg-9" style="width: 1059px;">
               <textarea class="tinymce-editor" id="productDescription" name="productDescription">${productDescription}</textarea>
-              <div class="text-danger small position-absolute" style="top: 100%; left: 150px;" id="error-productDescription">${errorProductDescription}</div>
+              <div class="text-danger small position-absolute" style="top: 100%; left: 162px;" id="error-productDescription">${errorProductDescription}</div>
             </div>
           </div>
           <div class="d-flex justify-content-between mt-4">

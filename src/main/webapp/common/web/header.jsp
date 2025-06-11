@@ -53,8 +53,8 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="#" class="active">
-                    <span>ƯU ĐÃI LỚN THÁNG 3</span>
+                  <a href="saleT5" class="active">
+                    <span>ƯU ĐÃI LỚN THÁNG 5</span>
                     <i class="fa-solid fa-plus"></i>
                   </a>
                 </li>
@@ -90,13 +90,17 @@
               <a href="#">Nam</a>
             </li>
             <li>
-              <a href="#" class="active">Ưu đãi lớn tháng 3</a>
+              <a href="saleT5" class="active">Ưu đãi lớn tháng 5</a>
+              
+            </li>
+            <li>
+              <a href="#">Bộ sưu tập</a>
               <ul>
                 <div class="sub-title-menu">
                   <a href="#">SALE 50% Toàn bộ SP</a>
                 </div>
                 <li>
-                  <a href="#">Áo công sở</a>
+                  <a href="#">BLUE SONATA</a>
                 </li>
                 <li>
                   <a href="#">Đầm kiểu</a>
@@ -116,15 +120,12 @@
               </ul>
             </li>
             <li>
-              <a href="#">Bộ sưu tập</a>
-            </li>
-            <li>
               <a href="#">Về chúng tôi</a>
             </li>
           </ul>
         </nav>
         <div class="inner-logo">
-          <a href="/">
+          <a href="trang-chu">
             <img src="<c:url value='/templates/web/images/logo.png'/>" alt="IVY moda" />
           </a>
         </div>
@@ -158,7 +159,7 @@
             </div>
             <!-- End Collapse Headphone -->
             <div class="inner-user">
-              <a href="#"><i class="fa-regular fa-user"></i></a>
+              <a href="login"><i class="fa-regular fa-user"></i></a>
             </div>
             <div class="inner-cart">
               <!-- Cart Mobile -->
@@ -179,7 +180,7 @@
                 <div class="offcanvas-body">
                   <div class="inner-content">
                     <div class="cart-mobile-total">Tổng cộng:<b>0đ</b></div>
-                    <a href="#" class="cart-mobile-button">Đăng nhập</a>
+                    <a href="login" class="cart-mobile-button">Đăng nhập</a>
                   </div>
                 </div>
               </div>

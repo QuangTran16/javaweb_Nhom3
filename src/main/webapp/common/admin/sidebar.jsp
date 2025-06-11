@@ -5,7 +5,7 @@
   <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="admin-home">
+        <a class="nav-link collapsed" href="admin-home">
           <i class="bi bi-grid"></i>
           <span>Tổng quan</span>
         </a>
@@ -13,7 +13,7 @@
       <!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="admin-manage-product">
+        <a class="nav-link collapsed" href="admin-manage-product">
           <i class="bi bi-box-seam"></i><span>Quản lý sản phẩm</span>
         </a>
         
@@ -21,7 +21,7 @@
       <!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link "  href="admin-order-list">
+        <a class="nav-link collapsed"  href="admin-order-list">
           <i class="bi bi-bag"></i><span>Quản lý đơn hàng</span>
         </a>
         
@@ -29,7 +29,7 @@
       <!-- End Forms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link "  href="admin-manage-account">
+        <a class="nav-link collapsed"  href="admin-manage-account">
           <i class="bi bi-person"></i><span>Quản lý tài khoản</span>
         </a>
         
@@ -37,7 +37,7 @@
       <!-- End Tables Nav -->
 
       <li class="nav-item">
-        <a class="nav-link"  href="admin-report">
+        <a class="nav-link collapsed"  href="admin-report">
           <i class="bi bi-bar-chart"></i><span>Báo cáo & thống kê</span>
         </a>
       </li>
@@ -46,7 +46,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#doanhso">
+        <a class="nav-link collapsed" href="admin-recent-sale">
           <i class="bi-graph-up-arrow"></i>
           <span>Doanh số gần đây</span>
         </a>
@@ -54,7 +54,7 @@
       <!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#banchay">
+        <a class="nav-link collapsed" href="admin-top-selling">
           <i class="bi-fire"></i>
           <span>Bán chạy nhất</span>
         </a>

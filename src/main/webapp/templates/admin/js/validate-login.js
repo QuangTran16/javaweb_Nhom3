@@ -16,18 +16,12 @@
         }
 
          if (password === '') {
-            alert('Vui lòng nhập tên đăng nhập!');
+            alert('Vui lòng nhập mật khẩu!');
             form.classList.add('was-validated');
             return;
         }
         
-        // Password validation
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        if (!passwordRegex.test(password)) {
-            alert('Mật khẩu phải dài ít nhất 8 ký tự, chứa chữ hoa, chữ thường, số và ký tự đặc biệt (!@#$%^&*)!');
-            form.classList.add('was-validated');
-            return;
-        }
+      
         
        
     });

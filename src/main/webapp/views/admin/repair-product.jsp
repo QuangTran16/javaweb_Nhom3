@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-md-6 d-flex align-items-center position-relative mb-3">
                             <label for="productCode" class="form-label" style="width: 150px;">Mã sản phẩm</label>
-                            <input type="text" class="form-control" id="productCode" name="productCode" value="${product.productCode}">
+                            <input type="text" class="form-control" id="productCode" name="productCode" value="${product.productCode}" style="margin-left: 40px;">
                             <div class="text-danger small position-absolute" style="top: 100%; left: 130px;" id="error-productCode"></div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-md-6 d-flex align-items-center position-relative mb-3">
                             <label for="productCategory" class="form-label" style="width: 150px;">Danh mục</label>
-                            <select class="form-select" id="productCategory" name="productCategory">
+                            <select class="form-select" id="productCategory" name="productCategory" style="margin-left: 40px;">
                                 <option value="">Chọn danh mục</option>
                                 <c:forEach var="category" items="${categories}">
                                     <option value="${category}" <c:if test="${category == product.productCategory}">selected</c:if>>${category}</option>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-md-6 d-flex align-items-center position-relative mb-3">
                             <label for="productColor" class="form-label" style="width: 150px;">Màu sắc</label>
-                            <input type="text" class="form-control" id="productColor" name="productColor" value="${product.productColor}">
+                            <input type="text" class="form-control" id="productColor" name="productColor" value="${product.productColor}" style="margin-left: 40px;">
                             <div class="text-danger small position-absolute" style="top: 100%; left: 130px;" id="error-productColor"></div>
                         </div>
                     </div>

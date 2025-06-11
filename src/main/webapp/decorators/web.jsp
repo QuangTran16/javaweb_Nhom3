@@ -62,5 +62,6 @@
 
 	<!-- Jquery -->
 	<script src="<c:url value='/templates/web/js/jquery.js'/>"></script>
+	<script src="<c:url value='/templates/web/js/jquery-saleT5.js'/>"></script>
 </body>
 </html>
