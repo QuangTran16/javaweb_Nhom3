@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import dao.IProductDAO;
 import dao.Impl.ProductImpl;
 
-@WebServlet("/admin-delete-product")
-public class DeleteProduct extends HttpServlet {
+@WebServlet("/admin-permanently-delete-product")
+public class PermanentlyDeleteProduct extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private IProductDAO productDAO;
 
@@ -31,19 +31,19 @@ public class DeleteProduct extends HttpServlet {
             }
 
             int productId = Integer.parseInt(productIdStr);
-            boolean success = productDAO.deleteProduct(productId);
+            boolean success = productDAO.permanentlyDeleteProduct(productId);
             if (success) {
-                request.getSession().setAttribute("message", "Sản phẩm đã được chuyển vào thùng rác!");
+                request.getSession().setAttribute("message", "Xóa vĩnh viễn sản phẩm thành công!");
                 response.sendRedirect("admin-manage-product");
             } else {
-                request.getSession().setAttribute("errorMessage", "Xóa sản phẩm thất bại.");
+                request.getSession().setAttribute("errorMessage", "Xóa vĩnh viễn sản phẩm thất bại.");
                 response.sendRedirect("admin-manage-product");
             }
         } catch (NumberFormatException e) {
             request.getSession().setAttribute("errorMessage", "ID sản phẩm không hợp lệ.");
             response.sendRedirect("admin-manage-product");
         } catch (Exception e) {
-            request.getSession().setAttribute("errorMessage", "Đã xảy ra lỗi khi xóa sản phẩm.");
+            request.getSession().setAttribute("errorMessage", "Đã xảy ra lỗi khi xóa vĩnh viễn sản phẩm.");
             response.sendRedirect("admin-manage-product");
         }
     }

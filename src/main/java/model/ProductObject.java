@@ -19,5 +19,6 @@ public class ProductObject {
 	private String productCategory;
 	private Date createdAt;
 	private Date updateAt;
+	private boolean isDeleted; // Thêm thuộc tính isDeleted
 	
 }

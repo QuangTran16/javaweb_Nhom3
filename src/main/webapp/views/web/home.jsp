@@ -60,7 +60,7 @@
                                 New
                             </div>
                             <div class="inner-image">
-                                <a href="#">
+                                <a href="<c:url value='/product-detail?id=${product.productId}'/>">
                                     <img src="<c:url value='${product.productImage}'/>" alt="${product.productName}">
                                     <img src="<c:url value='${product.productImage}'/>" alt="${product.productName}" class="hover-img">
                                 </a>
@@ -74,7 +74,7 @@
                                     <div class="inner-favorite"><i class="bi bi-heart"></i></div>
                                 </div>
                                 <h3 class="inner-title">
-                                    <a href="#">${product.productName}</a>
+                                    <a href="<c:url value='/product-detail?id=${product.productId}'/>">${product.productName}</a>
                                 </h3>
                                 <div class="price-product">
                                     <div class="inner-price">
@@ -122,7 +122,7 @@
                             </div>
                             <div class="inner-discount">-50<span>%</span></div>
                             <div class="inner-image">
-                                <a href="#">
+                                <a href="<c:url value='/product-detail?id=${product.productId}'/>">
                                     <img src="<c:url value='${product.productImage}'/>" alt="${product.productName}">
                                     <img src="<c:url value='${product.productImage}'/>" alt="${product.productName}" class="hover-img">
                                 </a>
@@ -136,7 +136,7 @@
                                     <div class="inner-favorite"><i class="bi bi-heart"></i></div>
                                 </div>
                                 <h3 class="inner-title">
-                                    <a href="#">${product.productName}</a>
+                                    <a href="<c:url value='/product-detail?id=${product.productId}'/>">${product.productName}</a>
                                 </h3>
                                 <div class="price-product">
                                     <div class="inner-price">
