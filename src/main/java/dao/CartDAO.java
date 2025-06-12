@@ -2,13 +2,19 @@ package dao;
 
 import java.util.List;
 
+import model.CartObject;
 import model.ProductObject;
 
 
 
 public interface CartDAO {
-	List<ProductObject> getProducts(int userId);
-    void addToCart(int userId, int productId);
-    void updateCart(int userId, int productId, int quantity);
-    void deleteFromCart(int userId, int productId);
+	List<CartObject> getCartItems(int userId);
+
+    CartObject getCartItem(int userId, int productId, String productSize);
+
+    void addToCart(int userId, int productId, int quantity, String productSize);
+
+    boolean updateCart(int userId, int productId, int quantity, String productSize);
+
+    boolean deleteCartItem(int userId, int productId, String size);
 }

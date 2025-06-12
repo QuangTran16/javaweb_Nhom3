@@ -26,7 +26,7 @@
 }
 
 .section-4 .inner-item:last-child {
-  border-right: 0;
+  border: 0;
 }
 
 .section-4 .inner-item select,

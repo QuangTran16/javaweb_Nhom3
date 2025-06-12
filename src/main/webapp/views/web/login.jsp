@@ -89,7 +89,7 @@
 											tài khoản</h5>
 									</div>
 
-									<form class="row g-3 needs-validation" action="${pageContext.request.contextPath}/trang-chu" method="post">
+									<form class="row g-3 needs-validation" action="${pageContext.request.contextPath}/auth/login" method="post">
 										<div class="col-12">
 											<label for="yourUsername" class="form-label">Tên
 												đăng nhập</label>
@@ -130,7 +130,7 @@
 										</div>
 										<div class="col-12">
 											<p class="small mb-0">
-												Chưa có tài khoản? <a href="register">Tạo tài
+												Chưa có tài khoản? <a href="pages-register.html">Tạo tài
 													khoản</a>
 											</p>
 										</div>

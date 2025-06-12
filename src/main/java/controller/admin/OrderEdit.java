@@ -1,5 +1,9 @@
 package controller.admin;
 
+import dao.Impl.OrderDAOImpl;
+import dao.OrderDAO;
+import model.OrderObject;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -9,32 +13,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class OrderEdit
- */
 @WebServlet("/admin-order-edit")
 public class OrderEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public OrderEdit() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/views/admin/order-edit.jsp");
-		rd.forward(request, response);
+
+		String orderIdParam = request.getParameter("orderId");
+		int orderId;
+		if(orderIdParam != null) {
+			orderId = Integer.parseInt(orderIdParam);
+			OrderDAO orderDAO = new OrderDAOImpl();
+			OrderObject order = orderDAO.getOrderDetailByOrderId(orderId);
+
+			request.setAttribute("order", order);
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/order-edit.jsp");
+			rd.forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

@@ -1,3 +1,4 @@
+<%@page import="model.UserObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
@@ -162,29 +163,19 @@
               <a href="login"><i class="fa-regular fa-user"></i></a>
             </div>
             <div class="inner-cart">
-              <!-- Cart Mobile -->
-              <a data-bs-toggle="offcanvas" href="#cart-mobile" role="button" aria-controls="cart-mobile">
+              <%
+                UserObject userObject = (UserObject) session.getAttribute("user");
+              %>
+              <% if (userObject == null) { %>
+              <a href="/jsp-servlet/login">
                 <i class="bi bi-bag"></i>
-                <span>0</span>
+                
               </a>
-              <div class="offcanvas offcanvas-end" tabindex="-1" id="cart-mobile" aria-labelledby="cart-mobile-title">
-                <div class="offcanvas-header">
-                  <h5 class="offcanvas-title" id="cart-mobile-title">
-                    Giỏ hàng
-                    <div class="cart-mobile-quantity">0</div>
-                  </h5>
-                  <button data-bs-dismiss="offcanvas" aria-label="Close">
-                    <i class="fa-solid fa-xmark"></i>
-                  </button>
-                </div>
-                <div class="offcanvas-body">
-                  <div class="inner-content">
-                    <div class="cart-mobile-total">Tổng cộng:<b>0đ</b></div>
-                    <a href="login" class="cart-mobile-button">Đăng nhập</a>
-                  </div>
-                </div>
-              </div>
-              <!-- End Cart Mobile -->
+              <% } else { %>
+              <a href="/jsp-servlet/customer/cart">
+                <i class="bi bi-bag"></i>
+              </a>
+              <% } %>
             </div>
           </div>
         </div>

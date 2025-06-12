@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
@@ -25,35 +26,36 @@
     <section class="section dashboard">
       <div class="row">
         <div class="section-4">
-          <div class="inner-wrap">
-            <div class="inner-item inner-label"><i class="fa-solid fa-filter"></i> Bộ lọc</div>
-            <div class="inner-item">
-              <select name="">
-                <option value="">Trạng thái </option>
-                <option value="">Hoạt động</option>
-                <option value="">Tạm dừng</option>
-              </select>
+          <form action="/jsp-servlet/admin-order-list" method="get">
+            <div class="inner-wrap">
+              <div class="inner-item inner-label"><i class="fa-solid fa-filter"></i> Bộ lọc</div>
+              <div class="inner-item">
+                <select name="orderStatus">
+                  <option value="">Trạng thái </option>
+                  <option ${orderStatus == 'pending' ? 'selected="selected"' : ''} value="pending">Khởi tạo</option>
+                  <option ${orderStatus == 'shipping' ? 'selected="selected"' : ''} value="shipping">Đang giao</option>
+                  <option ${orderStatus == 'success' ? 'selected="selected"' : ''} value="success">Thành công</option>
+                  <option ${orderStatus == 'canceled' ? 'selected="selected"' : ''} value="canceled">Đã hủy</option>
+                </select>
+              </div>
+              <div class="inner-item">
+                <select name="paymentMethod">
+                  <option value="">Phương thức thanh toán</option>
+                  <option ${paymentMethod == 'COD' ? 'selected="selected"' : ''} value="COD">Tiền mặt</option>
+                  <option ${paymentMethod == 'BANK' ? 'selected="selected"' : ''} value="BANK">Chuyển khoản</option>
+                  <option ${paymentMethod == 'credit_card' ? 'selected="selected"' : ''} value="credit_card">Thẻ tín dụng</option>
+                </select>
+              </div>
+              <div class="inner-item">
+                <select name="paymentStatus">
+                  <option value="">Trạng thái thanh toán</option>
+                  <option ${paymentStatus == 'unpaid' ? 'selected="selected"' : ''} value="unpaid">Chưa thanh toán</option>
+                  <option ${paymentStatus == 'paid' ? 'selected="selected"' : ''} value="paid">Đã thanh toán</option>
+                </select>
+              </div>
+              <button type="submit" class="inner-item inner-reset">Áp dụng</button>
             </div>
-            <div class="inner-item">
-              <input type="date" /><span>-</span>
-              <input type="date" />
-            </div>
-            <div class="inner-item">
-              <select name="">
-                <option value="">Phương thức thanh toán</option>
-                <option value="">Tiền mặt</option>
-                <option value="">Chuyển khoản</option>
-              </select>
-            </div>
-            <div class="inner-item">
-              <select name="">
-                <option value="">Trạng thái thanh toán</option>
-                <option value="">Chưa thanh toán</option>
-                <option value="">Đã thanh toán</option>
-              </select>
-            </div>
-            <div class="inner-item inner-reset"><i class="fa-solid fa-rotate-left"></i> Xóa bộ lọc</div>
-          </div>
+          </form>
         </div>
       </div>
       <div class="row">
@@ -72,116 +74,87 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div class="inner-code">OD000001</div>
-                  </td>
-                  <td>
-                    <div>Họ tên: Lê Văn A</div>
-                    <div>SĐT: 0123456789</div>
-                    <div>Ghi chú: Test...</div>
-                  </td>
-                  <td>
-                    <div class="inner-list">
-                      <div class="inner-item">
-                        <div class="inner-image"> <img src="<c:url value='/templates/admin/img/LemonWhisperDress.webp'/>" /></div>
-                        <div class="inner-content">
-                          <div class="inner-name">Lemon Whisper Dress – Đầm maxi hoa vàng</div>
-                          <div class="inner-quantity">
-                            <div>Màu sắc: Họa tiết Vàng</div>
-                            <div>Size: L</div>
-                            <div>Số lượng: 1</div>
+                <c:forEach var="order" items="${orders}">
+                  <tr>
+                    <td>
+                      <div class="inner-code">DH#${order.orderId}</div>
+                    </td>
+                    <td>
+                      <div>Họ tên: ${order.userObject.fullname}</div>
+                      <div>SĐT: ${order.userObject.phoneNumber}</div>
+                      <div>Địa chỉ: ${order.userObject.address}</div>
+                    </td>
+                    <td>
+                      <div class="inner-list">
+                        <c:forEach var="orderItem" items="${order.orderDetailList}">
+                          <div class="inner-item">
+                            <div class="inner-image"> <img src="<c:url value='${orderItem.productObject.productImage}'/>" /></div>
+                            <div class="inner-content">
+                              <div class="inner-name">${orderItem.productObject.productName}</div>
+                              <div class="inner-quantity">
+                                <div>Màu sắc: ${orderItem.productColor}</div>
+                                <div>Size: ${orderItem.productSize}</div>
+                                <div>Số lượng:
+                                  <fmt:formatNumber value="${orderItem.quantitySold}"
+                                                    type="number" groupingUsed="true" />
+                                </div>
+                                <div>Giá:
+                                  <fmt:formatNumber value="${orderItem.price}"
+                                                    type="number" groupingUsed="true" />
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        </c:forEach>
                       </div>
-                      <div class="inner-item">
-                        <div class="inner-image"> <img src="<c:url value='/templates/admin/img/LemonWhisperDress.webp'/>" /></div>
-                        <div class="inner-content">
-                          <div class="inner-name">Lemon Whisper Dress – Đầm maxi hoa vàng</div>
-                          <div class="inner-quantity">
-                            <div>Màu sắc: Họa tiết Vàng</div>
-                            <div>Size: L</div>
-                            <div>Số lượng: 1</div>
-                          </div>
-                        </div>
+                    </td>
+                    <td>
+                      <div>Tổng tiền:
+                        <fmt:formatNumber value="${order.totalAmount}"
+                                          type="number" groupingUsed="true" />đ
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>Tổng tiền: 10.000.000đ</div>
-                    <div>Giảm: 400.000đ</div>
-                    <div>Mã giảm: THOITRANG2025</div>
-                    <div>Thanh toán: 9.600.000đ</div>
-                    <div>PTTT: Ví Momo</div>
-                    <div>TTTT: Đã thanh toán</div>
-                  </td>
-                  <td>
-                    <div class="badge badge-orange">Khởi tạo</div>
-                  </td>
-                  <td>
-                    <div>16:20</div>
-                    <div>01/01/2025</div>
-                  </td>
-                  <td>
-                    <div class="inner-buttons"><a class="inner-edit" href="admin-order-edit"><i class="fa-solid fa-pen-to-square"></i>
-                      </a><a class="inner-remove" href="#"><i class="fa-solid fa-trash-can"></i></a></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="inner-code">OD000002</div>
-                  </td>
-                  <td>
-                    <div>Họ tên: Lê Văn A</div>
-                    <div>SĐT: 0123456789</div>
-                    <div>Ghi chú: Test...</div>
-                  </td>
-                  <td>
-                    <div class="inner-list">
-                      <div class="inner-item">
-                        <div class="inner-image"> <img src="<c:url value='/templates/admin/img/GoldenHourSkirt.webp'/>" /></div>
-                        <div class="inner-content">
-                          <div class="inner-name">Golden Hour Skirt – Chân váy maxi vàng hoa</div>
-                          <div class="inner-quantity">
-                            <div>Màu sắc: Họa tiết Vàng</div>
-                            <div>Size: L</div>
-                            <div>Số lượng: 1</div>
-                          </div>
-                        </div>
+                      <div>PTTT:
+                        <c:choose>
+                          <c:when test="${order.paymentMethod == 'credit_card'}">Thẻ tín dụng</c:when>
+                          <c:when test="${order.paymentMethod == 'COD'}">Thanh toán khi nhận hàng</c:when>
+                          <c:when test="${order.paymentMethod == 'BANK'}">Chuyển khoản ngân hàng</c:when>
+                        </c:choose>
                       </div>
-                      <div class="inner-item">
-                        <div class="inner-image"> <img src="<c:url value='/templates/admin/img/GoldenHourSkirt.webp'/>" /></div>
-                        <div class="inner-content">
-                          <div class="inner-name">Golden Hour Skirt – Chân váy maxi vàng hoa</div>
-                          <div class="inner-quantity">
-                            <div>Màu sắc: Họa tiết Vàng</div>
-                            <div>Size: L</div>
-                            <div>Số lượng: 1</div>
-                          </div>
-                        </div>
+                      <div>TTTT:
+                        <c:choose>
+                          <c:when test="${order.paymentStatus == 'unpaid'}">Chưa thanh toán</c:when>
+                          <c:when test="${order.paymentStatus == 'paid'}">Đã thanh toán</c:when>
+                        </c:choose>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div>Tổng tiền: 10.000.000đ</div>
-                    <div>Giảm: 400.000đ</div>
-                    <div>Mã giảm: THOITRANG2025</div>
-                    <div>Thanh toán: 9.600.000đ</div>
-                    <div>PTTT: Ví Momo</div>
-                    <div>TTTT: Đã thanh toán</div>
-                  </td>
-                  <td>
-                    <div class="badge badge-green">Đã duyệt</div>
-                  </td>
-                  <td>
-                    <div>16:20</div>
-                    <div>01/01/2025</div>
-                  </td>
-                  <td>
-                    <div class="inner-buttons"><a class="inner-edit" href="admin-order-edit"><i class="fa-solid fa-pen-to-square"></i>
-                      </a><a class="inner-remove" href="#"><i class="fa-solid fa-trash-can"></i></a></div>
-                  </td>
-                </tr>
+                    </td>
+                    <td>
+                      <c:choose>
+                        <c:when test="${order.orderStatus == 'pending'}">
+                          <div class="badge badge-orange">Khởi tạo</div>
+                        </c:when>
+                        <c:when test="${order.orderStatus == 'shipping'}">
+                          <div class="badge badge-orange">Đang vận chuyển</div>
+                        </c:when>
+                        <c:when test="${order.orderStatus == 'success'}">
+                          <div class="badge badge-green">Thành công</div>
+                        </c:when>
+                        <c:when test="${order.orderStatus == 'canceled'}">
+                          <div class="badge badge-red">Đã hủy</div>
+                        </c:when>
+                      </c:choose>
+
+                    </td>
+                    <td>
+                      <div>${order.orderDate}</div>
+                    </td>
+                    <td>
+                      <div class="inner-buttons"><a class="inner-edit"
+                          href="/jsp-servlet/admin-order-edit?orderId=${order.orderId}">
+                        <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a class="inner-remove"  href="#" data-order-id="${order.orderId}"><i class="fa-solid fa-trash-can"></i></a></div>
+                    </td>
+                  </tr>
+                </c:forEach>
               </tbody>
             </table>
           </div>
@@ -190,24 +163,59 @@
       <div class="row">
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-end">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
+
+            <!-- Nút Previous -->
+            <c:if test="${pageNo gt 1}">
+              <li class="page-item">
+                <a class="page-link"
+                   href="/jsp-servlet/admin-order-list?pageNo=${pageNo - 1}&orderStatus=${orderStatus}&paymentStatus=${paymentStatus}&paymentMethod=${paymentMethod}"
+                   aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            </c:if>
+
+            <!-- Trang đầu -->
+            <c:if test="${pageNo ne 1}">
+              <li class="page-item"><a class="page-link"
+                 href="/jsp-servlet/admin-order-list?pageNo=1&orderStatus=${orderStatus}&paymentStatus=${paymentStatus}&paymentMethod=${paymentMethod}">1</a></li>
+            </c:if>
+
+            <!-- Dấu ... nếu cách xa trang đầu -->
+            <c:if test="${pageNo gt 2}">
+              <li class="page-item disabled"><a class="page-link">...</a></li>
+            </c:if>
+
+            <!-- Trang hiện tại -->
+            <li class="page-item active"><a class="page-link" href="#">${pageNo}</a></li>
+
+            <!-- Dấu ... nếu cách xa trang cuối -->
+            <c:if test="${pageNo lt pageNumber - 1}">
+              <li class="page-item disabled"><a class="page-link">...</a></li>
+            </c:if>
+
+            <!-- Trang cuối -->
+            <c:if test="${pageNo ne pageNumber}">
+              <li class="page-item"><a class="page-link"
+                 href="/jsp-servlet/admin-order-list?pageNo=${pageNumber}&orderStatus=${orderStatus}&paymentStatus=${paymentStatus}&paymentMethod=${paymentMethod}">${pageNumber}</a></li>
+            </c:if>
+
+            <!-- Nút Next -->
+            <c:if test="${pageNo lt pageNumber}">
+              <li class="page-item">
+                <a class="page-link"
+                   href="/jsp-servlet/admin-order-list?pageNo=${pageNo + 1}&orderStatus=${orderStatus}&paymentStatus=${paymentStatus}&paymentMethod=${paymentMethod}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </c:if>
+
           </ul>
         </nav>
+
       </div>
     </section>
   </main>
-
+<script src="<c:url value='/templates/admin/js/order.js'/>"></script>
 </body>
 </html>
